@@ -46,7 +46,7 @@ class AccountBuilder
   def create_account
     @account = Account.create!(
       name: account_name,
-      locale: I18n.locale,
+      locale: @locale.presence || I18n.locale,
       custom_attributes: { 'onboarding_step' => 'account_details' }
     )
     Current.account = @account
