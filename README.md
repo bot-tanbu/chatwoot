@@ -7,6 +7,17 @@ ___
 
 The modern customer support platform, an open-source alternative to Intercom, Zendesk, Salesforce Service Cloud etc.
 
+## Singabana On Time public landing
+
+The main site `/` displays the Indonesian public information landing page. Staff access remains at `/app/login`; help-center custom domains and `CW_API_ONLY_SERVER` keep their existing behavior. The landing uses server-rendered HTML and native FAQ disclosures, without dashboard JavaScript or a website login for residents.
+
+Set `SINGABANA_WHATSAPP_NUMBER` to the operational WhatsApp number in international digits only (no `+`, spaces, or leading zero). It defaults to `628218713226`, the number printed on the supplied Singabana logo. Malformed values fail explicitly. This setting changes the CTA destination, not the phone number embedded in the logo artwork; replace the artwork too if the service number changes.
+
+Use the existing Rails/Vite setup and asset-build workflow. The dedicated Vite CSS entrypoint is `app/javascript/entrypoints/landing.css`. Logos and the Latin variable fonts are self-hosted in `public/brand-assets/`, with the font licenses included. No new application dependencies or database migrations are required. Indonesian landing source copy lives under `public_landing` in `config/locales/en.yml` and is explicitly selected for this local public service; community locale files are unchanged.
+
+With a local Rails server running, execute the landing-only browser coverage from `tests/playwright`: `BASE_URL=http://localhost:3000 pnpm exec playwright test tests/e2e/ui/public-landing.spec.ts --project=chromium`. These tests use no credentials or database fixtures and intercept the external WhatsApp handoff rather than contacting the real service. Only localhost targets are allowed.
+
+
 <p>
   <img src="https://img.shields.io/circleci/build/github/chatwoot/chatwoot" alt="CircleCI Badge">
     <a href="https://hub.docker.com/r/chatwoot/chatwoot/"><img src="https://img.shields.io/docker/pulls/chatwoot/chatwoot" alt="Docker Pull Badge"></a>

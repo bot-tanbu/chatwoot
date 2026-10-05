@@ -2,6 +2,7 @@ const { slateDark } = require('@radix-ui/colors');
 import { colors } from './theme/colors';
 import { icons } from './theme/icons';
 const defaultTheme = require('tailwindcss/defaultTheme');
+const plugin = require('tailwindcss/plugin');
 const {
   iconsPlugin,
   getIconCollections,
@@ -43,6 +44,8 @@ const tailwindConfig = {
         sans: defaultSansFonts,
         inter: ['Inter', ...defaultSansFonts],
         interDisplay: ['InterDisplay', ...defaultSansFonts],
+        'landing-display': ['"Plus Jakarta Sans"', 'sans-serif'],
+        'landing-body': ['"Source Sans 3"', 'sans-serif'],
       },
       fontWeight: {
         420: '420',
@@ -215,6 +218,14 @@ const tailwindConfig = {
       'modal-backdrop-dark': 'rgba(0, 0, 0, 0.6)',
       current: 'currentColor',
       ...colors,
+      landing: {
+        ink: '#10213A',
+        muted: '#526174',
+        silver: '#F4F6F8',
+        line: '#E3E8EE',
+        orange: '#E97816',
+        green: '#146C43',
+      },
       body: slateDark.slate7,
     },
     keyframes: {
@@ -279,6 +290,26 @@ const tailwindConfig = {
     },
   },
   plugins: [
+    plugin(({ addBase }) => {
+      addBase({
+        '@font-face': [
+          {
+            fontFamily: 'Plus Jakarta Sans',
+            fontStyle: 'normal',
+            fontWeight: '400 800',
+            fontDisplay: 'swap',
+            src: 'url("/brand-assets/plus-jakarta-sans-latin.woff2") format("woff2")',
+          },
+          {
+            fontFamily: 'Source Sans 3',
+            fontStyle: 'normal',
+            fontWeight: '400 700',
+            fontDisplay: 'swap',
+            src: 'url("/brand-assets/source-sans-3-latin.woff2") format("woff2")',
+          },
+        ],
+      });
+    }),
     // eslint-disable-next-line
     require('@tailwindcss/typography'),
     iconsPlugin({

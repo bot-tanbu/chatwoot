@@ -39,7 +39,9 @@ class DashboardController < ActionController::Base
   before_action :ensure_html_format
   layout 'vueapp'
 
-  def index; end
+  def index
+    render 'landing/show', layout: 'landing' if request.path == '/'
+  end
 
   private
 

@@ -1,0 +1,120 @@
+<header class="mx-auto flex max-w-[84rem] items-center justify-between gap-4 px-5 py-6 sm:px-8 lg:px-12">
+  <a href="#main" class="flex min-w-0 items-center gap-3 rounded-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-landing-green">
+    <img src="/brand-assets/bpbd.png" alt="<%= landing_text('bpbd_alt') %>" width="56" height="56" class="size-12 shrink-0 object-contain">
+    <span class="font-landing-display text-sm font-bold leading-snug"><%= landing_text('agency') %><span class="mt-1 block font-landing-body text-xs font-normal text-landing-muted"><%= landing_text('region') %></span></span>
+  </a>
+  <nav aria-label="<%= landing_text('navigation_label') %>" class="flex items-center gap-5 text-sm font-semibold sm:gap-8">
+    <a href="#tentang" class="hidden rounded-md py-2 text-landing-muted hover:text-landing-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-landing-green md:block"><%= landing_text('about_link') %></a>
+    <a href="#cara-melapor" class="rounded-md py-2 text-landing-muted hover:text-landing-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-landing-green"><%= landing_text('steps_link') %></a>
+    <a href="#pertanyaan" class="hidden rounded-md py-2 text-landing-muted hover:text-landing-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-landing-green md:block"><%= landing_text('faq_link') %></a>
+  </nav>
+</header>
+
+<main id="main">
+  <section aria-labelledby="hero-title" class="mx-auto grid max-w-[84rem] items-center gap-12 px-5 pb-16 pt-10 sm:px-8 lg:grid-cols-[1.15fr_1fr] lg:gap-12 lg:px-12 lg:pb-20 lg:pt-14">
+    <div class="motion-safe:animate-[fade-in-up_800ms_cubic-bezier(0.32,0.72,0,1)_both]">
+      <img src="/brand-assets/beraksi.webp" alt="<%= landing_text('beraksi_alt') %>" width="3177" height="775" class="mb-8 h-auto w-56 object-contain sm:w-64">
+      <p class="mb-4 font-landing-display text-sm font-semibold text-landing-muted"><%= landing_text('brand') %></p>
+      <h1 id="hero-title" class="max-w-[43rem] font-landing-display text-[2.6rem] font-bold leading-[1.12] tracking-[-0.045em] sm:text-[3.5rem] xl:text-[4rem]"><%= landing_text('hero_title') %> <span class="text-landing-green"><%= landing_text('hero_emphasis') %></span></h1>
+      <p class="mt-6 max-w-[31rem] text-lg leading-relaxed text-landing-muted sm:text-xl"><%= landing_text('hero_description') %></p>
+      <div class="mt-8 flex flex-wrap items-center gap-x-7 gap-y-5">
+        <%= render 'landing/report_button' %>
+        <a href="#cara-melapor" class="inline-flex min-h-12 items-center gap-2 rounded-md text-base font-semibold underline decoration-landing-line underline-offset-8 hover:decoration-landing-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-landing-green"><%= landing_text('steps_link') %><span aria-hidden="true" class="i-ri-arrow-down-line size-4"></span></a>
+      </div>
+    </div>
+    <div class="relative flex items-center justify-center py-4 motion-safe:animate-[fade-in-up_1000ms_cubic-bezier(0.32,0.72,0,1)_both] lg:py-8">
+      <div aria-hidden="true" class="absolute inset-3 rounded-full bg-landing-silver sm:inset-0"></div>
+      <div aria-hidden="true" class="absolute inset-0 rounded-full border border-landing-line lg:-inset-4"></div>
+      <img src="/brand-assets/logo.svg" alt="<%= landing_text('logo_alt') %>" width="500" height="500" fetchpriority="high" class="relative h-auto w-full max-w-[31rem] object-contain">
+    </div>
+  </section>
+
+  <section id="tentang" aria-labelledby="about-title" class="scroll-mt-8 bg-landing-silver">
+    <div class="mx-auto max-w-[84rem] px-5 py-16 sm:px-8 lg:px-12 lg:py-24">
+      <div class="grid gap-8 lg:grid-cols-[1fr_1.1fr] lg:gap-24">
+        <div>
+          <p class="mb-5 flex items-center gap-3 text-xs font-semibold uppercase tracking-[0.16em] text-landing-muted"><span aria-hidden="true" class="h-px w-8 bg-landing-orange"></span><%= landing_text('service_label') %></p>
+          <h2 id="about-title" class="max-w-lg font-landing-display text-3xl font-semibold leading-tight tracking-tight sm:text-[2.6rem]"><%= landing_text('about_title') %></h2>
+        </div>
+        <div class="self-end">
+          <p class="text-lg leading-relaxed text-landing-muted"><%= landing_text('about_description') %></p>
+          <p class="mt-5 text-base font-semibold"><%= landing_text('about_expansion') %></p>
+        </div>
+      </div>
+      <div class="mt-14 grid gap-8 border-t border-landing-line pt-10 md:grid-cols-3 md:gap-12">
+        <% [['direct', 'i-ri-whatsapp-line'], ['location', 'i-ri-map-pin-line'], ['evidence', 'i-ri-camera-line']].each do |key, icon| %>
+          <article>
+            <span aria-hidden="true" class="<%= icon %> mb-5 block size-7 text-landing-green"></span>
+            <h3 class="font-landing-display text-lg font-semibold"><%= landing_text("#{key}_title") %></h3>
+            <p class="mt-3 max-w-sm text-lg leading-relaxed text-landing-muted"><%= landing_text("#{key}_description") %></p>
+          </article>
+        <% end %>
+      </div>
+    </div>
+  </section>
+
+  <section id="cara-melapor" aria-labelledby="steps-title" class="mx-auto max-w-[84rem] scroll-mt-8 px-5 py-16 sm:px-8 lg:px-12 lg:py-24">
+    <h2 id="steps-title" class="font-landing-display text-3xl font-semibold tracking-tight sm:text-[2.6rem]"><%= landing_text('steps_title') %></h2>
+    <p class="mt-4 max-w-xl text-lg leading-relaxed text-landing-muted"><%= landing_text('steps_description') %></p>
+    <ol class="mt-12 grid gap-10 md:grid-cols-3 md:gap-12">
+      <% %w[one two three].each_with_index do |step, index| %>
+        <li class="border-t border-landing-line pt-6">
+          <span aria-hidden="true" class="font-landing-display text-5xl font-medium tracking-tight text-landing-green/70"><%= format('%02d', index + 1) %></span>
+          <h3 class="mt-6 font-landing-display text-xl font-semibold"><%= landing_text("step_#{step}_title") %></h3>
+          <p class="mt-3 text-lg leading-relaxed text-landing-muted"><%= landing_text("step_#{step}_description") %></p>
+        </li>
+      <% end %>
+    </ol>
+  </section>
+
+  <section aria-labelledby="preparation-title" class="mx-auto max-w-[84rem] px-5 pb-16 sm:px-8 lg:px-12 lg:pb-24">
+    <div class="rounded-[2rem] bg-landing-silver p-2 ring-1 ring-landing-line">
+      <div class="grid gap-10 rounded-[1.5rem] bg-white p-6 sm:p-10 lg:grid-cols-[0.85fr_1fr] lg:gap-16 lg:p-14">
+        <div>
+          <span aria-hidden="true" class="i-ri-file-list-3-line mb-6 block size-8 text-landing-green"></span>
+          <h2 id="preparation-title" class="font-landing-display text-3xl font-semibold leading-tight tracking-tight sm:text-4xl"><%= landing_text('preparation_title') %></h2>
+          <p class="mt-5 text-lg leading-relaxed text-landing-muted"><%= landing_text('preparation_description') %></p>
+        </div>
+        <ul class="grid gap-x-8 gap-y-7 sm:grid-cols-2">
+          <% %w[location event needs photo].each do |key| %>
+            <li>
+              <span aria-hidden="true" class="i-ri-check-line mb-3 block size-5 text-landing-green"></span>
+              <h3 class="font-landing-display text-base font-semibold"><%= landing_text("preparation_#{key}_title") %></h3>
+              <p class="mt-2 text-base leading-relaxed text-landing-muted"><%= landing_text("preparation_#{key}_description") %></p>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+    <aside class="mt-6 flex items-start gap-4 rounded-2xl bg-landing-silver p-6">
+      <span aria-hidden="true" class="i-ri-shield-check-line mt-1 size-6 shrink-0 text-landing-green"></span>
+      <div><h3 class="font-landing-display text-base font-semibold"><%= landing_text('safety_title') %></h3><p class="mt-2 max-w-4xl text-base leading-relaxed text-landing-muted"><%= landing_text('safety_description') %></p></div>
+    </aside>
+  </section>
+
+  <section id="pertanyaan" aria-labelledby="faq-title" class="mx-auto grid max-w-[84rem] scroll-mt-8 gap-8 px-5 pb-16 sm:px-8 lg:grid-cols-[0.75fr_1fr] lg:gap-20 lg:px-12 lg:pb-24">
+    <h2 id="faq-title" class="font-landing-display text-3xl font-semibold leading-tight tracking-tight sm:text-[2.6rem]"><%= landing_text('faq_title') %></h2>
+    <div class="divide-y divide-landing-line border-y border-landing-line">
+      <% %w[account location photo whatsapp].each do |key| %>
+        <details class="group py-5">
+          <summary class="flex min-h-10 cursor-pointer list-none items-center justify-between gap-5 rounded-md font-landing-display text-base font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-landing-green [&::-webkit-details-marker]:hidden"><%= landing_text("faq_#{key}_question") %><span aria-hidden="true" class="i-ri-add-line size-5 shrink-0 group-open:hidden"></span><span aria-hidden="true" class="i-ri-subtract-line hidden size-5 shrink-0 group-open:block"></span></summary>
+          <p class="mt-4 max-w-2xl pe-6 text-lg leading-relaxed text-landing-muted"><%= landing_text("faq_#{key}_answer") %></p>
+        </details>
+      <% end %>
+    </div>
+  </section>
+
+  <section aria-labelledby="closing-title" class="bg-landing-silver">
+    <div class="mx-auto flex max-w-[84rem] flex-col items-start justify-between gap-8 px-5 py-16 sm:px-8 lg:flex-row lg:items-center lg:px-12 lg:py-20">
+      <div class="max-w-2xl"><h2 id="closing-title" class="font-landing-display text-3xl font-semibold leading-tight tracking-tight sm:text-[2.6rem]"><%= landing_text('closing_title') %></h2><p class="mt-4 text-lg text-landing-muted"><%= landing_text('closing_description') %></p></div>
+      <div class="shrink-0"><%= render 'landing/report_button' %></div>
+    </div>
+  </section>
+</main>
+
+<footer class="mx-auto max-w-[84rem] px-5 py-10 sm:px-8 lg:px-12">
+  <div class="flex flex-col justify-between gap-8 sm:flex-row sm:items-center">
+    <div class="flex max-w-xl items-center gap-4"><img src="/brand-assets/bpbd.png" alt="<%= landing_text('bpbd_alt') %>" width="48" height="48" loading="lazy" class="size-12 shrink-0 object-contain"><div><p class="font-landing-display text-sm font-semibold"><%= landing_text('agency_full') %></p><p class="mt-2 text-sm text-landing-muted"><%= landing_text('footer_note') %></p></div></div>
+    <a href="/app/login" class="inline-flex min-h-11 items-center gap-2 self-start rounded-md text-sm text-landing-muted hover:text-landing-ink focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-landing-green sm:self-auto"><%= landing_text('staff_link') %><span aria-hidden="true" class="i-ri-arrow-right-up-line size-4"></span></a>
+  </div>
+</footer>
