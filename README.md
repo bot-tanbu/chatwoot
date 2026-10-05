@@ -11,6 +11,8 @@ The modern customer support platform, an open-source alternative to Intercom, Ze
 
 The main site `/` displays the Indonesian public information landing page. Staff access remains at `/app/login`; help-center custom domains and `CW_API_ONLY_SERVER` keep their existing behavior. The landing uses server-rendered HTML and native FAQ disclosures, without dashboard JavaScript or a website login for residents.
 
+The sticky navigation displays BerAKSI and BPBD logos. The hero loads `/brand-assets/singabana.png` directly, independently of the dashboard's generic `logo.svg`. Content is limited to the service introduction, three reporting steps, a brief safety reminder, FAQ disclosures, and the WhatsApp CTA.
+
 Set `SINGABANA_WHATSAPP_NUMBER` to the operational WhatsApp number in international digits only (no `+`, spaces, or leading zero). It defaults to `628218713226`, the number printed on the supplied Singabana logo. Malformed values fail explicitly. This setting changes the CTA destination, not the phone number embedded in the logo artwork; replace the artwork too if the service number changes.
 
 Use the existing Rails/Vite setup and asset-build workflow. The dedicated Vite CSS entrypoint is `app/javascript/entrypoints/landing.css`. Logos and the Latin variable fonts are self-hosted in `public/brand-assets/`, with the font licenses included. No new application dependencies or database migrations are required. Indonesian landing source copy lives under `public_landing` in `config/locales/en.yml` and is explicitly selected for this local public service; community locale files are unchanged.
