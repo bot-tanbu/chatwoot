@@ -108,3 +108,4 @@ Procfile.worktree
 
 # Graphify output
 graphify-out/
+tests/
